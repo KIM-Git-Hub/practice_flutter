@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
 
       //라우트 패턴 나중에 gorouter 써보기
-      initialRoute: '/',
+      initialRoute: '/', // 시작 화면 설정
       routes: {
         '/' : (context) => SplashScreen(),
         '/main' : (context) => MainScreen(),
