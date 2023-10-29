@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_project_flutter01/screen/main_screen.dart';
 import 'package:practice_project_flutter01/screen/splash_screen.dart';
+import 'package:practice_project_flutter01/screen/sub_screen.dart';
 
 void main() {
   //플러터 앱은 main() 함수부터 시작
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //build() 어떠한 위젯을 만들지 정의하는 함수.
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // 오른쪽 위 라벨 제거
       //MaterialApp() 함수 :그림을 그리는데 필요한 캔버스
       //title, theme, home 등이 정의되어 있다.
       // title은 앱의 이름, theme은 앱의 테마 색상, home은 앱을 실행할 때 첫 화면의 표시 내용을 지정한다.
@@ -27,7 +29,18 @@ class MyApp extends StatelessWidget {
       routes: {
         '/' : (context) => SplashScreen(),
         '/main' : (context) => MainScreen(),
+
       },
+      onGenerateRoute: (settings) { //정보까지 넘기기 위해
+        if(settings.name == '/sub'){
+          String msg = settings.arguments as String;
+          return MaterialPageRoute(builder: (context) {
+            return SubScreen(msg: msg);
+          },);
+        }
+        return null;
+      },
+
     );
   }
 }

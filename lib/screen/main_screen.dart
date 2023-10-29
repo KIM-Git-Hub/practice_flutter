@@ -9,22 +9,42 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   //List listHello = ['홍드로이드', '김지영', '김애옹', '레츠고'];
-  TextEditingController idController = TextEditingController();
+  // TextEditingController idController = TextEditingController();
+  //String msg = '이곳에 입력값이 없데이트 됩니다.';
+  // ValueNotifier<int> counter = ValueNotifier<int>(0); //초기값이 0
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('메인화면')),
+      appBar: AppBar(title: Text('메인화면'),),
       body: Column(
         children: [
-          TextField(
+          TextButton(onPressed: () {
+            Navigator.pushNamed(context, '/sub', arguments: 'hello'); //화면이동 뿐만 아니라 정보도 넘겨줄수 잇음
+          }, child: Text('텍스트버튼')),
+
+          /*  TextField(
             controller: idController, //사용자가 텍스트 필드에 입력하는 값을 받아낼 수 있더
             decoration: InputDecoration(labelText: '아이디를 입력해 주세용'),
-          ),
-        ElevatedButton(onPressed: () {
-          // 클릭시 동장 구현
-          print(idController.text.toString());
-        }, child: Text('아이디입력값 가져오기'))],
+          )*/
+          /* ElevatedButton(onPressed: () {
+
+            counter.value = 30;
+
+
+            // 클릭시 동장 구현
+           /* setState(() {
+              //위젯 업데이트
+              //setState 밖에 써둬도 업데이트는 되는데 아예 전체를 업데이트 해버리기 때문에 효율적으로 쓸려면 알잘딱 하자
+             msg = idController.text.toString();
+            });*/
+
+          }, child: Text('아이디입력값 가져오기')),
+          ValueListenableBuilder<int>(valueListenable: counter, builder: (context, value, child) {
+            return Text('Count: $value' );
+          },),*/
+          //Text(msg, style: TextStyle(fontSize: 30),)
+        ],
       ),
 
       /* body: ListView.builder(
