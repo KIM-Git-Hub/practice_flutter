@@ -17,11 +17,24 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('메인화면'),),
+      drawer: Drawer(child: ListView(children: [
+        DrawerHeader(child: Text('헤더영역')),
+        ListTile(title: Text('홈화면'), onTap: () {
+
+        },),
+        ListTile(title: Text('메인 화면'), onTap: () {
+
+        },),
+        ListTile(title: Text('서브 화면'), onTap: () {
+
+        },),
+      ],),),
       body: Column(
         children: [
           TextButton(onPressed: () {
             Navigator.pushNamed(context, '/sub', arguments: 'hello'); //화면이동 뿐만 아니라 정보도 넘겨줄수 잇음
           }, child: Text('텍스트버튼')),
+
 
           /*  TextField(
             controller: idController, //사용자가 텍스트 필드에 입력하는 값을 받아낼 수 있더
